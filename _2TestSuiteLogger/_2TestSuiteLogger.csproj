@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+  
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="after_training_model\**" />
+    <Compile Remove="_100TestCaseResult\**" />
+    <Compile Remove="_200TestCaseResult\**" />
+    <Compile Remove="_300TestCaseResult\**" />
+    <EmbeddedResource Remove="after_training_model\**" />
+    <EmbeddedResource Remove="_100TestCaseResult\**" />
+    <EmbeddedResource Remove="_200TestCaseResult\**" />
+    <EmbeddedResource Remove="_300TestCaseResult\**" />
+    <None Remove="after_training_model\**" />
+    <None Remove="_100TestCaseResult\**" />
+    <None Remove="_200TestCaseResult\**" />
+    <None Remove="_300TestCaseResult\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="NewTestData.csv" />
+    <None Remove="NewTestData_flaky_by_browser.png" />
+    <None Remove="NewTestData_flaky_by_testname.png" />
+    <None Remove="NewTestData_flaky_distribution.png" />
+    <None Remove="NewTestData_predicted.csv" />
+    <None Remove="TestExecutionLog.csv" />
+    <None Remove="TestExecutionLog_1.csv" />
+    <None Remove="TestExecutionLog_classification_report.txt" />
+    <None Remove="TestExecutionLog_confusion_matrix.png" />
+    <None Remove="TestExecutionLog_flaky_by_browser.png" />
+    <None Remove="TestExecutionLog_flaky_by_testname.png" />
+    <None Remove="TestExecutionLog_flaky_distribution.png" />
+    <None Remove="TestExecutionLog_train_eval.csv" />
+    <None Remove="TestResult.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="NUnit" Version="3.14.0" />
+    <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
+    <PackageReference Include="NUnit.Console" Version="3.20.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.30.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="134.0.6998.16500" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

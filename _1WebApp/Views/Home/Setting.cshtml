@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Setting";
+}
+
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+
+    <div class="settings-grid">
+
+        <div class="setting-box">
+            <h3>Default Tier</h3>
+            <p>Free</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Email Verification</h3>
+            <p>Enabled</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>SMS Notifications</h3>
+            <p>Disabled</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Weekly Digest</h3>
+            <p>Enabled</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Ticket Auto-Close</h3>
+            <p>7 days</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Default Timezone</h3>
+            <p>GMT+8</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Allowed Login Attempts</h3>
+            <p>5</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>MFA Requirement</h3>
+            <p>Optional</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Support SLA</h3>
+            <p>24 hours</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Welcome Email Template</h3>
+            <p>Default_Welcome_v2</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Inactive Cleanup Policy</h3>
+            <p>Every 90 days</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Assigned Support Team</h3>
+            <p>Team A</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>User Role Default</h3>
+            <p>Basic User</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Custom Field 1</h3>
+            <p>Referral Code</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Notification Frequency</h3>
+            <p>Weekly</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Export Format</h3>
+            <p>CSV</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Custom View Limit</h3>
+            <p>10 per user</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Region Lock</h3>
+            <p>Disabled</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Profile Completeness Reminder</h3>
+            <p>After 5 days</p>
+        </div>
+
+        <div class="setting-box">
+            <h3>Auto-Tag New Users</h3>
+            <p>Enabled</p>
+        </div>
+
+    </div>
+
+    <style>
+        .settings-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .setting-box {
+            flex: 1 1 calc(50% - 16px);
+            background: #f4f4f4;
+            padding: 16px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+    </style>
+</main>

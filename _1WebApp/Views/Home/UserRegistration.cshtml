@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "User Registration";
+}
+
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+    <br />
+    <br />
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input id="name" name="name" type="text" />
+
+        <label for="email">Email:</label>
+        <input id="email" name="email" type="email" />
+
+        <button id="submitBtn" type="submit">Submit</button>
+
+        <div class="validation-error" style="display:none; color:red;">All fields are required.</div>
+        <div id="successMessage" style="display:none; color:green;">Form submitted successfully!</div>
+    </form>
+
+    @section Scripts {
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        $("#submitBtn").click(function (e) {
+            e.preventDefault();
+
+            const name = $("#name").val().trim();
+            const email = $("#email").val().trim();
+            const errorDiv = $(".validation-error");
+            const successDiv = $("#successMessage");
+
+            if (!name || !email) {
+                errorDiv.show();
+                successDiv.hide();
+                return;
+            }
+
+            errorDiv.hide();
+
+            $.ajax({
+                url: '@Url.Action("UserRegister_API", "Home")',
+                type: 'POST',
+                data: { name: name, email: email },
+                success: function (response) {
+                    if (response.success) {
+                        successDiv.text("Registered successfully!").show();
+                    } else {
+                        errorDiv.text("Server-side error occurred.").show();
+                    }
+                },
+                error: function () {
+                    errorDiv.text("Server timeout.").show();
+                }
+            });
+        });
+        </script>
+    }
+</main>

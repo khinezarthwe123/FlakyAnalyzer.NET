@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+    <div id="customerData" class="customer-grid"></div>
+</main>
+
+<style>
+    .customer-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: space-between;
+    }
+
+    .customer-card {
+        flex: 1 1 calc(50% - 16px); /* 2 columns */
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+   
+</style>
+
+@section Scripts {
+    <script src="~/Scripts/jquery-3.7.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '@Url.Action("GetCustomerDetails_API", "Home")',
+                method: "GET",
+                success: function (customers) {
+                    $("#customerData").empty();
+
+                    customers.forEach(function (cust) {
+                        let ordersHtml = "<ul>";
+
+                        if (Array.isArray(cust.Orders)) {
+                            cust.Orders.forEach(function (order) {
+                                ordersHtml += `<li>Order #${order.OrderId}: ${order.Product} ($${order.Amount}) on ${order.Date}</li>`;
+                            });
+                        } else {
+                            ordersHtml += "<li>No orders found.</li>";
+                        }
+
+                        ordersHtml += "</ul>";
+
+                        $("#customerData").append(
+                            `<div class="customer-card">
+                                <h3>${cust.Name} (ID: ${cust.Id})</h3>
+                                <p>Email: ${cust.Email}</p>
+                                <h4>Recent Orders:</h4>
+                                ${ordersHtml}
+                            </div>`
+                        );
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error("AJAX Error:", xhr.status, xhr.statusText, error);
+                    console.log("Full response:", xhr.responseText);
+                    alert(`Error ${xhr.status} - ${xhr.statusText}\n\nDetails:\n${xhr.responseText.slice(0, 300)}`);
+                }
+            });
+        });
+    </script>
+}

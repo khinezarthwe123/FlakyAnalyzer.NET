@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Feature";
+}
+<main aria-labelledby="title">
+    <h2 id="title">@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+    <div id="featuresList">
+        @for (int i = 1; i <= 10; i++)
+        {
+            <div class="feature-card">Feature @i</div>
+        }
+    </div>
+</main>
